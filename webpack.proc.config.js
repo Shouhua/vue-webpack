@@ -6,7 +6,8 @@ var generateCssLoaders = require('./style-loader.config');
 var merge = require('webpack-merge');
 var path = require('path');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-var AssetsPlugin = require('assets-webpack-plugin');
+var AssetsPlugin = require('assets-webpack-plugin'); // 生成包对应路径的json文件
+// var MD5HashPlugin = require('webpack-md5-hash');
 
 const config = {
   entry: {},
@@ -33,11 +34,12 @@ const config = {
     }),
     new ExtractTextPlugin({
       allChunks: true,
-      filename: 'css/[name].css'
+      filename: 'css/[name].[contenthash:8].css'
     }),
     new AssetsPlugin({
       path: path.resolve(__dirname, 'dist')
-    })
+    }),
+    // new MD5HashPlugin()
   ]
 };
 
