@@ -30,7 +30,8 @@ var devServerOptions = Object.assign({}, webpackConfig.devServer, {
   stats: {
     colors: true,
     errors: true,
-    modules: false
+    modules: false,
+    assets: false
   },
   contentBase: path.resolve(__dirname, 'dist'),
   hot: true,

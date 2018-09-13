@@ -10,7 +10,7 @@ function generateCssLoaders(loaders, options) {
     }
   });
 
-  if (options.isDev === 'development') {
+  if (options.isDev) {
     return cssLoaders;
   } else {
     return ExtractTextWebpackPlugin.extract({

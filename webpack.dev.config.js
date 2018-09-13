@@ -17,14 +17,42 @@ module.exports = merge(baseConfig, {
   },
   module: {
     rules: [{
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: generateCssLoaders(
-        ['vue-style', 'css', 'sass', 'postcss'], {
-          sourceMap: true,
-          isDev: true
-        })
-    }]
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10,
+          name: 'img/[name].[hash:5].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'fonts/[name].[hash:5].[ext]'
+        }
+      },
+      {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/element-ui/lib')
+        ],
+        use: generateCssLoaders(
+          ['style', 'css'], {
+            sourceMap: true,
+            isDev: true
+          })
+      },
+      {
+        test: /\.scss$/,
+        use: generateCssLoaders(
+          ['vue-style', 'css', 'sass', 'postcss'], {
+            sourceMap: true,
+            isDev: true
+          })
+      }
+    ]
   },
   devtool: '//@source-map',
   devServer: {

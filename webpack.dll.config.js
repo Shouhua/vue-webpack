@@ -9,12 +9,12 @@ module.exports = {
     extensions: ['.js', '.vue']
   },
   entry: {
-    vendor: ['vue', 'vue-router']
+    vendor: ['vue', 'vue-router', 'element-ui']
   },
   output: {
     filename: '[name].dll.js',
     path: path.resolve(__dirname, 'dist/dll'),
-    library: '_dll_[name]' 
+    library: '_dll_[name]'
   },
   plugins: [
     new DllPlugin({

@@ -17,7 +17,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .content {
-  color: lightcoral;
+  color: purple;
 }
 </style>
 

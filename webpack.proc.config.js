@@ -1,11 +1,12 @@
 var baseConfig = require('./webpack.base.config');
 var camelCase = require('camelcase');
-var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var fs = require('fs');
 var generateCssLoaders = require('./style-loader.config');
 var merge = require('webpack-merge');
 var path = require('path');
-var UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var AssetsPlugin = require('assets-webpack-plugin');
 
 const config = {
   entry: {},
@@ -22,7 +23,7 @@ const config = {
     }]
   },
   plugins: [
-    new UglifyJsWebpackPlugin({
+    new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
           warnings: false
@@ -30,9 +31,12 @@ const config = {
       },
       parallel: true
     }),
-    new ExtractTextWebpackPlugin({
+    new ExtractTextPlugin({
       allChunks: true,
       filename: 'css/[name].css'
+    }),
+    new AssetsPlugin({
+      path: path.resolve(__dirname, 'dist')
     })
   ]
 };
