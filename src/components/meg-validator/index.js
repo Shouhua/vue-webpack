@@ -1,13 +1,13 @@
-import MegValidator from './meg-validator';
+import MegFormValidator from './meg-validator';
 
 var install = function (Vue) {
   if (install.installed) return;
   install.installed = true;
   var ElFormItemComponent = Vue.component('ElFormItem');
   if (!ElFormItemComponent) throw Error('Please install element-ui first');
-  ElFormItemComponent.mixin(MegValidator);
+  ElFormItemComponent.mixin(MegFormValidator);
 }
 
-MegValidator.install = install;
+MegFormValidator.install = install;
 
-export default MegValidator;
+export default MegFormValidator;

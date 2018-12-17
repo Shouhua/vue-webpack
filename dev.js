@@ -28,10 +28,12 @@ var compiler = Webpack(webpackConfig);
 
 var devServerOptions = Object.assign({}, webpackConfig.devServer, {
   stats: {
-    colors: true,
-    errors: true,
-    modules: false,
-    assets: false
+    // colors: true,
+    // errors: true,
+    // modules: true,
+    // assets: true,
+    chunks: true,
+    
   },
   contentBase: path.resolve(__dirname, 'dist'),
   hot: true,

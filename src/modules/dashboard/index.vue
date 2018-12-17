@@ -5,7 +5,8 @@
       In the {{name}} page!
     </div>
     <el-form :rules="rules" :model="ruleForm" ref="ruleForm" label-width="100px" class="rule-form">
-      <el-form-item label="活动名称" prop="name" :meg="checkDup" required name>
+      <!-- <el-form-item label="活动名称" prop="name" :meg="checkDup" required :char-number="{min: 3, max: 5}"> -->
+      <el-form-item label="活动名称111" prop="name" :meg="checkDup" required name>
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
       <el-form-item label="活动地址" prop="addr">
@@ -48,7 +49,6 @@ export default {
   },
   methods: {
     checkDup(rule, value, callback) {
-      console.log(value);
       axios
         .post(
           "http://10.199.1.140/api/auth/v5/check",
@@ -59,7 +59,7 @@ export default {
           {
             headers: {
               Authorization:
-                "qefjSsnmnVjoWvMMLuHIwLTjXZLIMEjQNlOeiutXtgnmITYJrXRDHwlUNwId"
+                "LwzwAjfpFbWxxRpbnYpGtrLjOuVFVpxWfTRzkIoKJsuIpYySWiVtMdedOqpF"
             }
           }
         )
